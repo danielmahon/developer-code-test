@@ -76,6 +76,11 @@ yarn install
 yarn start
 ```
 
+## Online Demo (Web)
+
+In case you have issues configuring your development environment for Flutter I have hosted the web version of the app here:  
+https://developer-code-test.vercel.app
+
 ## Manual Start (iOS/Web/Android)
 
 If for some reason the `yarn start` command fails (I did not have time to test on multiple environments) you can run the commands manually and modify accordingly:

@@ -117,3 +117,5 @@ dist
 
 db/*.json
 flutter_app/assets/cma-artworks.json
+
+.vercel
