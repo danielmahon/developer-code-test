@@ -31,6 +31,7 @@ class IntroScreen extends HookWidget {
               children: [
                 const Spacer(),
                 logo,
+                const Spacer(),
                 Text(
                   'Welcome, this app will be your gateway to a very limited selection of artwork.\n\n(Formatted for mobile devices)',
                   textAlign: TextAlign.center,
@@ -54,6 +55,7 @@ class IntroScreen extends HookWidget {
               children: [
                 const Spacer(),
                 logo,
+                const Spacer(),
                 Text(
                   'The full collection will unlock after you make a very generous donation.\n\nUpgrade today.\n\nWe accept the following:\nNon-sequential bills\nPiles of gold coins\nVibranium',
                   textAlign: TextAlign.center,
@@ -76,6 +78,7 @@ class IntroScreen extends HookWidget {
               children: [
                 const Spacer(),
                 logo,
+                const Spacer(),
                 Text(
                   'In the meantime, please choose some of your favorite collections to get started...',
                   textAlign: TextAlign.center,
