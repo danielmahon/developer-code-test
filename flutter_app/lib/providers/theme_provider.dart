@@ -37,7 +37,7 @@ final themeProvider = StateProvider(
         subtitle2: GoogleFonts.alegreya(),
       ),
       iconTheme: const IconThemeData(color: Colors.white),
-      popupMenuTheme: PopupMenuThemeData(
+      popupMenuTheme: const PopupMenuThemeData(
         color: Colors.white,
         textStyle: TextStyle(color: Colors.black),
       )

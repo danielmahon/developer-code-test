@@ -9,6 +9,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../hooks/riverpod_hooks.dart';
 import '../providers/data_provider.dart';
 import '../providers/router_provider.dart';
 import '../providers/state_provider.dart';
@@ -30,58 +31,71 @@ class DetailScreen extends HookWidget {
     final stateController = useProvider(stateProvider);
     final router = useProvider(routerProvider);
     final topPadding = MediaQuery.of(context).viewPadding.top;
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     final bottomScrollController = useScrollController();
     final pullUpState = useState(FloatingPullUpState.collapsed);
     final src = 'assets/images/${artwork.accession}_reduced.jpg';
     final remoteLink = 'https://www.clevelandart.org/art/${artwork.accession}';
 
-    useEffect(() {
-      Future.microtask(() {
-        stateController.state = stateController.state.copyWith(
-          fab: FloatingActionButton(
-            backgroundColor: Theme.of(context).accentColor,
-            onPressed: () {},
-            child: PopupMenuButton(
-              onSelected: (String result) async {
-                switch (result) {
-                  case 'open':
-                    if (await canLaunch(remoteLink)) {
-                      await launch(remoteLink);
-                    } else {
-                      throw 'Could not launch $remoteLink';
-                    }
-                    break;
-                  case 'share':
-                    Share.share(remoteLink);
-                    break;
-                }
-              },
-              itemBuilder: (BuildContext context) => [
-                const PopupMenuItem(
-                  value: 'open',
-                  child: Text('Open on website'),
+    useAsyncEffect(() {
+      stateController.state = stateController.state.copyWith(
+        fab: FloatingActionButton(
+          backgroundColor: theme.accentColor,
+          onPressed: () {},
+          child: PopupMenuButton(
+            offset: const Offset(0, -72),
+            onSelected: (String result) async {
+              switch (result) {
+                case 'open':
+                  if (await canLaunch(remoteLink)) {
+                    await launch(remoteLink);
+                  } else {
+                    throw 'Could not launch $remoteLink';
+                  }
+                  break;
+                case 'share':
+                  Share.share(remoteLink);
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(
+                value: 'open',
+                child: Row(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(right: 8.0),
+                      child: Icon(Icons.open_in_browser, color: Colors.black),
+                    ),
+                    Text('Open Website'),
+                  ],
                 ),
-                const PopupMenuItem(
-                  value: 'share',
-                  child: Text('Share'),
+              ),
+              PopupMenuItem(
+                value: 'share',
+                child: Row(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(right: 8.0),
+                      child: Icon(Icons.share, color: Colors.black),
+                    ),
+                    Text('Share'),
+                  ],
                 ),
-              ],
-              icon: const Icon(Icons.share),
-            ),
+              ),
+            ],
+            icon: const Icon(Icons.share),
           ),
-        );
-      });
-      return () {
-        Future.microtask(() {
-          stateController.state = stateController.state.copyWith(fab: null);
-        });
-      };
+        ),
+      );
+    }, () {
+      stateController.state = stateController.state.copyWith(fab: null);
     }, [stateController]);
 
     return FloatingPullUpCardLayout(
       cardColor: const Color.fromARGB(255, 41, 45, 62).withOpacity(0.9),
-      collpsedStateOffset: (x, y) => x - 195,
+      collpsedStateOffset: (x, y) => x - 160,
       state: pullUpState.value,
       // width: MediaQuery.of(context).size.width - 50,
       onStateChange: (state) {
@@ -97,6 +111,33 @@ class DetailScreen extends HookWidget {
       },
       uncollpsedStateOffset: (x) => topPadding + 100,
       autoPadding: false,
+      dragHandleBuilder: (context, constraints, beingDragged) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                artwork.department.name.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .overline
+                    .copyWith(color: Colors.grey),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 4, bottom: 4, left: 16, right: 16),
+              child: Text(
+                artwork.title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+          ],
+        );
+      },
       body: SingleChildScrollView(
         controller: bottomScrollController,
         physics: pullUpState.value == FloatingPullUpState.collapsed
@@ -228,27 +269,10 @@ class BottomInfo extends HookWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            artwork.department.name.toUpperCase(),
-            textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .overline
-                .copyWith(color: Colors.grey),
+          const Divider(
+            color: Colors.white,
+            thickness: 1,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8.0),
-            child: Text(
-              artwork.title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
-          if (artwork.creators.isNotEmpty)
-            const Divider(
-              color: Colors.white,
-              thickness: 1,
-            ),
           ...artwork.creators.asMap().entries.map((entry) {
             final index = entry.key;
             final creator = entry.value;
