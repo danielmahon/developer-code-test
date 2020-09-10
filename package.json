@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "## Part 1: Data Transformation",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "jest",
     "start": "npm-run-all -s build:python copy build:flutter -p run:ios run:web",
