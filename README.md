@@ -20,8 +20,19 @@ https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 ### Python
 
-This project was built using `venv` virtual environment, the python runtime and packages should be self-contained in the `venv` folder and should work without additional installs.  
+This project was built using `venv` virtual environment and Python 3.8.5.
 https://www.python.org/downloads/
+
+Setup `pip` and `venv` as defined here:  
+https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-packages-using-pip-and-virtual-environments
+
+Then install the requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+The python script is set to use `#!./venv/bin/python` so you should NOT need to run `source env/bin/activate`.
 
 ### Flutter
 
@@ -38,8 +49,37 @@ See available devices by running `flutter devices`.
 
 Ready, Set, Go!
 
-```
+```bash
+git clone https://github.com/danielmahon/developer-code-test.git
+cd developer-code-test
+yarn install
 yarn start
+```
+
+## Manual Start
+
+If for some reason the `yarn start` command fails (I did not have time to test on multiple environments) you can run the commands manually and modify accordingly:
+
+```bash
+# Convert SQlite Database with Python
+source env/bin/activate
+python python/main.py
+
+# Copy exported JSON to Flutter app
+cpy db/cma-artworks.json flutter_app/assets
+
+# Move to Flutter app
+cd flutter_app
+
+# Build Flutter generated files
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# Run Flutter app in iOS simulator
+flutter run --debug -d 'iPhone 11 Pro'
+
+# Run Flutter app in Google Chrome
+flutter run --debug -d 'Chrome'
+
 ```
 
 # Project Requirements
