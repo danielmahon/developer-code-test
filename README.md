@@ -1,6 +1,6 @@
 # CMA Developer Code Test
 
-Hello there! Thank you for allowing me the opportunity show you just a "smidge" of what I can do. I decided to build this app in Flutter since it allows me to quickly produce something for iOS/Android/Web in the time allotted.
+Hello there! Thank you for allowing me the opportunity to show you just a "smidge" of what I can do. I decided to build this app in Flutter since it allows me to quickly produce something for iOS/Android/Web in the time allotted.
 
 I am just as comfortable however, building the same app in ReactJS or React Native. The project goal, audience, and accessability ultimately decide what distribution platform is best. For example, I would not use Flutter for an app designed mostly for web browser consumption, just as I would not use ReactJS for a mostly native application.
 
@@ -24,7 +24,7 @@ https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 ### Python
 
-This project was built using `venv` virtual environment and Python 3.8.5.
+This project was built using `venv` virtual environment and Python 3.8.5.  
 https://www.python.org/downloads/
 
 Setup `pip` and `venv` as defined here:  
