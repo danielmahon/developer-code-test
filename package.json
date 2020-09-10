@@ -1,0 +1,38 @@
+{
+  "name": "developer-code-test",
+  "version": "1.0.0",
+  "description": "## Part 1: Data Transformation",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "npm-run-all -s build:python copy build:flutter -p run:ios run:web",
+    "build:python": "./python/main.py",
+    "build:flutter": "cd flutter_app && flutter pub run build_runner build --delete-conflicting-outputs",
+    "copy": "cpy db/cma-artworks.json flutter_app/assets",
+    "run:ios": "cd flutter_app && flutter run --debug -d 'iPhone 11 Pro'",
+    "run:web": "cd flutter_app && flutter run --debug -d 'Chrome'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClevelandMuseumArt/developer-code-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClevelandMuseumArt/developer-code-test/issues"
+  },
+  "homepage": "https://github.com/ClevelandMuseumArt/developer-code-test#readme",
+  "dependencies": {
+    "jsondiffpatch": "0.4.1",
+    "lodash.isequal": "4.5.0",
+    "npm-run-all": "4.1.5"
+  },
+  "devDependencies": {
+    "@types/jest": "26.0.13",
+    "@types/lodash.isequal": "4.5.5",
+    "cpy-cli": "3.1.1",
+    "jest": "26.4.2",
+    "ts-jest": "26.3.0",
+    "typescript": "4.0.2"
+  }
+}

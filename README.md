@@ -1,5 +1,49 @@
 # CMA Developer Code Test
 
+## Prerequisites
+
+### Tested Development Environment
+
+`macOS 10.15.5`  
+`Xcode 11.7`  
+`iOS Simulator iPhone 11 Pro (13.7)`  
+`Google Chrome Browser`
+
+### Node
+
+`node@12.18.0`  
+`npm@6.14.4`  
+https://nodejs.org/en/
+
+`yarn@1.21.1`  
+https://classic.yarnpkg.com/en/docs/install#mac-stable
+
+### Python
+
+This project was built using `venv` virtual environment, the python runtime and packages should be self-contained in the `venv` folder and should work without additional installs.  
+https://www.python.org/downloads/
+
+### Flutter
+
+This app is built with Google's Flutter UI and Dart runtime. You can find information on how to install here:  
+https://flutter.dev/docs/get-started/install
+
+## Quick Start
+
+I tried to make this as simple as possible to run.
+
+You will need to launch an instance of the `iPhone 11 Pro` simulator first. If you do not have access to that specific simulator you have change the corresponding `run:ios` npm script to another available simulator.
+
+See available devices by running `flutter devices`.
+
+Ready, Set, Go!
+
+```
+yarn start
+```
+
+# Project Requirements
+
 ## Part 1: Data Transformation
 
 A 5-table SQLite database has been provided. The database contains a table of 100 artworks, a table of creators, a table of departments, and 2 linking tables containing the relationships between artworks, departments, and creators.
@@ -12,7 +56,7 @@ Using the web or mobile framework of your choice, create a simple app that inges
 
 ## Completion and Submission
 
-Completed work should include all code to arrive at the solution, plus all code, assets, and resources required to run the final result of part 2. 
+Completed work should include all code to arrive at the solution, plus all code, assets, and resources required to run the final result of part 2.
 
 PLEASE INCLUDE a detailed README containing instructions for running the project locally.
 
