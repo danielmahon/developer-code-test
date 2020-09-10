@@ -32,10 +32,11 @@ class IntroScreen extends HookWidget {
                 const Spacer(),
                 logo,
                 Text(
-                  'Welcome, this app will be your gateway to a very limited selection of artwork.',
+                  'Welcome, this app will be your gateway to a very limited selection of artwork.\n\n(Formatted for mobile devices)',
                   textAlign: TextAlign.center,
-                  style: textTheme.bodyText1
-                      .copyWith(color: Colors.white.withOpacity(0.6)),
+                  style: textTheme.bodyText1.copyWith(
+                    color: Colors.white.withOpacity(0.6),
+                  ),
                 ),
                 const Spacer()
               ],
