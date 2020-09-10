@@ -4,14 +4,15 @@ Hello there! Thank you for allowing me the opportunity to show you just a "smidg
 
 I am just as comfortable however, building the same app in ReactJS or React Native. The project goal, audience, and accessability ultimately decide what distribution platform is best. For example, I would not use Flutter for an app designed mostly for web browser consumption, just as I would not use ReactJS for a mostly native application.
 
-## Prerequisites
-
-### Tested Development Environment
+Development Environment:
 
 `macOS 10.15.5`  
 `Xcode 11.7`  
+`Android Studio 3.5.3`  
 `iOS Simulator iPhone 11 Pro (13.7)`  
-`Google Chrome Browser`
+`Google Chrome Browser v85`
+
+## Prerequisites
 
 ### Node
 
@@ -38,12 +39,27 @@ pip install -r requirements.txt
 
 The python script is set to use `#!./venv/bin/python` so you should NOT need to run `source env/bin/activate`.
 
+### iOS
+
+You will need to have Xcode installed  
+https://apps.apple.com/us/app/xcode/id497799835?mt=12
+
+### Android
+
+You will need to install Android Studio and a compatible API28+ virtual device (ie Pixel 3)  
+https://developer.android.com/studio
+
+### Web
+
+This app was tested in Google Chrome but most modern browsers should work  
+https://www.google.com/chrome/
+
 ### Flutter
 
 This app is built with Google's Flutter UI and Dart runtime. You can find information on how to install here:  
 https://flutter.dev/docs/get-started/install
 
-## Quick Start
+## Quick Start (iOS/Web)
 
 I tried to make this as simple as possible to run.
 
@@ -60,7 +76,7 @@ yarn install
 yarn start
 ```
 
-## Manual Start
+## Manual Start (iOS/Web/Android)
 
 If for some reason the `yarn start` command fails (I did not have time to test on multiple environments) you can run the commands manually and modify accordingly:
 
@@ -78,8 +94,13 @@ cd flutter_app
 # Build Flutter generated files
 flutter pub run build_runner build --delete-conflicting-outputs
 
+# First, start the iPhone 11 Pro simulator
 # Run Flutter app in iOS simulator
 flutter run --debug -d 'iPhone 11 Pro'
+
+# First, start a API28+ Android Virtual Device
+# Run Flutter app in Android Virtual Device Manager (AVD)
+flutter run --debug -d 'AOSP on IA Emulator'
 
 # Run Flutter app in Google Chrome
 flutter run --debug -d 'Chrome'
