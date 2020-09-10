@@ -1,5 +1,9 @@
 # CMA Developer Code Test
 
+Hello there! Thank you for allowing me the opportunity show you just a "smidge" of what I can do. I decided to build this app in Flutter since it allows me to quickly produce something for iOS/Android/Web in the time allotted.
+
+I am just as comfortable however, building the same app in ReactJS or React Native. The project goal, audience, and accessability ultimately decide what distribution platform is best. For example, I would not use Flutter for an app designed mostly for web browser consumption, just as I would not use ReactJS for a mostly native application.
+
 ## Prerequisites
 
 ### Tested Development Environment
@@ -43,7 +47,7 @@ https://flutter.dev/docs/get-started/install
 
 I tried to make this as simple as possible to run.
 
-You will need to launch an instance of the `iPhone 11 Pro` simulator first. If you do not have access to that specific simulator you have change the corresponding `run:ios` npm script to another available simulator.
+You will need to launch an instance of the `iPhone 11 Pro` simulator first. If you do not have access to that specific simulator you have change the corresponding `run:ios` npm script in `package.json` to another available simulator.
 
 See available devices by running `flutter devices`.
 
