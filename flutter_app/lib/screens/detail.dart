@@ -114,30 +114,38 @@ class DetailScreen extends HookWidget {
       uncollpsedStateOffset: (x) => topPadding + 100,
       autoPadding: false,
       dragHandleBuilder: (context, constraints, beingDragged) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(
-                artwork.department.name.toUpperCase(),
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .overline
-                    .copyWith(color: Colors.grey),
+        return InkWell(
+          onTap: () {
+            pullUpState.value =
+                pullUpState.value == FloatingPullUpState.collapsed
+                    ? FloatingPullUpState.uncollapsed
+                    : FloatingPullUpState.collapsed;
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  artwork.department.name.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .overline
+                      .copyWith(color: Colors.grey),
+                ),
               ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(top: 4, bottom: 4, left: 16, right: 16),
-              child: Text(
-                artwork.title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 4, bottom: 4, left: 16, right: 16),
+                child: Text(
+                  artwork.title,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
       body: SingleChildScrollView(
@@ -170,7 +178,7 @@ class DetailScreen extends HookWidget {
                   backgroundDecoration: const BoxDecoration(
                     color: Colors.transparent,
                   ),
-                  // initialScale: PhotoViewComputedScale.contained,
+                  initialScale: PhotoViewComputedScale.contained,
                   imageProvider: AssetImage(src),
                 ),
               ),
