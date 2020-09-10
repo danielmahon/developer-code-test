@@ -81,15 +81,22 @@ yarn start
 If for some reason the `yarn start` command fails (I did not have time to test on multiple environments) you can run the commands manually and modify accordingly:
 
 ```bash
+# Clone repo
+git clone https://github.com/danielmahon/developer-code-test.git
+cd developer-code-test
+
 # Convert SQlite Database with Python
 source env/bin/activate
 python python/main.py
 
 # Copy exported JSON to Flutter app
-cpy db/cma-artworks.json flutter_app/assets
+cp db/cma-artworks.json flutter_app/assets
 
 # Move to Flutter app
 cd flutter_app
+
+# Install Flutter packages
+flutter pub get
 
 # Build Flutter generated files
 flutter pub run build_runner build --delete-conflicting-outputs

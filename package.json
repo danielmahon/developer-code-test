@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "npm-run-all -s build:python copy build:flutter -p run:ios run:web",
     "build:python": "./python/main.py",
-    "build:flutter": "cd flutter_app && flutter pub run build_runner build --delete-conflicting-outputs",
+    "build:flutter": "cd flutter_app && flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs",
     "copy": "cpy db/cma-artworks.json flutter_app/assets",
     "run:android": "cd flutter_app && flutter run --debug -d 'AOSP on IA Emulator'",
     "run:ios": "cd flutter_app && flutter run --debug -d 'iPhone 11 Pro'",
